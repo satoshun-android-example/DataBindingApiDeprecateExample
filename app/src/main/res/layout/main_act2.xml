@@ -4,6 +4,13 @@
   xmlns:tools="http://schemas.android.com/tools"
   tools:ignore="HardcodedText">
 
+  <data>
+
+    <variable
+      name="model"
+      type="com.github.satoshun.example.sample.Model2" />
+  </data>
+
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

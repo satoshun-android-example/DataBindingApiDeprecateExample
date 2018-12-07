@@ -1,13 +1,13 @@
 package com.github.satoshun.example.sample
 
-import android.app.Activity
 import android.content.Context
-import dagger.Binds
 import dagger.Component
 import dagger.Module
+import dagger.Provides
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import dagger.android.ContributesAndroidInjector
+import javax.inject.Inject
 import javax.inject.Scope
 import javax.inject.Singleton
 
@@ -26,17 +26,25 @@ interface AppComponent : AndroidInjector<App> {
 @Module
 interface InjectorsModule {
   @ActivityScope
-  @ContributesAndroidInjector(modules = [MainActivityBuilder::class])
+  @ContributesAndroidInjector(modules = [MainActivityBuilder::class, MainActivityProvider::class])
   fun mainActivity(): MainActivity
 }
 
 @Module
 interface MainActivityBuilder {
-  @Binds
-  fun bindContext(activity: Activity): Context
+}
+
+@Module
+class MainActivityProvider {
+  @Provides
+  fun providesFoo(context: Context): UserResource {
+    return UserResource(context)
+  }
 }
 
 @Scope
 @MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
 annotation class ActivityScope
+
+class OkOk @Inject constructor()
