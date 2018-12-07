@@ -8,7 +8,7 @@ object Vers {
 }
 
 object Libs {
-  const val android_plugin = "com.android.tools.build:gradle:3.2.1"
+  const val android_plugin = "com.android.tools.build:gradle:3.4.0-alpha07"
   const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
   const val versions_plugin = "com.github.ben-manes:gradle-versions-plugin:0.20.0"
 
@@ -58,5 +58,5 @@ object Libs {
   const val test_junit_rules = "androidx.test.ext:junit:1.0.0"
   const val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
   const val espresso = "androidx.test.espresso:espresso-core:3.1.0"
-  const val robolectric = "org.robolectric:robolectric:4.0"
+  const val robolectric = "org.robolectric:robolectric:4.0.2"
 }

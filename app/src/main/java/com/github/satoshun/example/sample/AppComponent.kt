@@ -1,9 +1,9 @@
 package com.github.satoshun.example.sample
 
 import android.content.Context
+import dagger.Binds
 import dagger.Component
 import dagger.Module
-import dagger.Provides
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import dagger.android.ContributesAndroidInjector
@@ -26,20 +26,14 @@ interface AppComponent : AndroidInjector<App> {
 @Module
 interface InjectorsModule {
   @ActivityScope
-  @ContributesAndroidInjector(modules = [MainActivityBuilder::class, MainActivityProvider::class])
+  @ContributesAndroidInjector(modules = [MainActivityBuilder::class])
   fun mainActivity(): MainActivity
 }
 
 @Module
 interface MainActivityBuilder {
-}
-
-@Module
-class MainActivityProvider {
-  @Provides
-  fun providesFoo(context: Context): UserResource {
-    return UserResource(context)
-  }
+  @Binds
+  fun bindContext(activity: MainActivity): Context
 }
 
 @Scope
